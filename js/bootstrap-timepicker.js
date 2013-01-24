@@ -89,10 +89,21 @@
             this.setDefaultTime(this.defaultTime);
         }
 
+        , disable: function(){
+            this.$element.attr('disabled', true);
+        }
+        , enable: function(){
+            this.$element.attr('disabled', false);
+        }
         , showWidget: function(e) {
             e.stopPropagation();
             e.preventDefault();
 
+            if (this.$element.attr('disabled'))
+            {
+                return;
+            }
+            
             if (this.open) {
                 return;
             }

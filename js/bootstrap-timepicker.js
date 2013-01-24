@@ -54,8 +54,8 @@
         constructor: Timepicker
 
         , init: function () {
-            if (this.$element.closest('.input-append, .input-prepend').length) {
-                this.$element.closest('.input-append, .input-prepend').find('.add-on').on('click', $.proxy(this.showWidget, this));
+            if (this.$element.siblings('.add-on, .prepend-on').length) {
+                this.$element.siblings('.add-on, .prepend-on').on('click', $.proxy(this.showWidget, this));
             }
 
             if (this.template) {
@@ -103,7 +103,7 @@
             {
                 return;
             }
-            
+
             if (this.open) {
                 return;
             }

@@ -60,16 +60,16 @@
 
             if (this.template) {
                 this.$element.on({
-                    focus: $.proxy(this.showWidget, this),
-                    click: $.proxy(this.showWidget, this),
-                    blur: $.proxy(this.blurElement, this)
+                    'focus.timepicker': $.proxy(this.showWidget, this),
+                    'click.timepicker': $.proxy(this.showWidget, this),
+                    'blur.timepicker': $.proxy(this.blurElement, this)
                 });
             } else {
                 this.$element.on({
-                    focus: $.proxy(this.highlightUnit, this),
-                    click: $.proxy(this.highlightUnit, this),
-                    keypress: $.proxy(this.elementKeypress, this),
-                    blur: $.proxy(this.blurElement, this)
+                    'focus.timepicker': $.proxy(this.highlightUnit, this),
+                    'click.timepicker': $.proxy(this.highlightUnit, this),
+                    'keypress.timepicker': $.proxy(this.elementKeypress, this),
+                    'blur.timepicker': $.proxy(this.blurElement, this)
                 });
             }
 
@@ -80,9 +80,9 @@
 
             if (this.showInputs) {
                 this.$widget.find('input').on({
-                    click: function() { this.select(); },
-                    keypress: $.proxy(this.widgetKeypress, this),
-                    change: $.proxy(this.updateFromWidgetInputs, this)
+                    'click.timepicker': function() { this.select(); },
+                    'keypress.timepicker': $.proxy(this.widgetKeypress, this),
+                    'change.timepicker': $.proxy(this.updateFromWidgetInputs, this)
                 });
             }
 

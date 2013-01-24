@@ -54,30 +54,23 @@
         constructor: Timepicker
 
         , init: function () {
-            if (this.$element.parent().hasClass('input-append')) {
-                this.$element.parent('.input-append').find('.add-on').on('click', $.proxy(this.showWidget, this));
+            if (this.$element.closest('.input-append').length) {
+                this.$element.closest('.input-append').find('.add-on').on('click', $.proxy(this.showWidget, this));
+            }
+
+            if (this.template) {
+                this.$element.on({
+                    focus: $.proxy(this.showWidget, this),
+                    click: $.proxy(this.showWidget, this),
+                    blur: $.proxy(this.blurElement, this)
+                });
+            } else {
                 this.$element.on({
                     focus: $.proxy(this.highlightUnit, this),
                     click: $.proxy(this.highlightUnit, this),
                     keypress: $.proxy(this.elementKeypress, this),
                     blur: $.proxy(this.blurElement, this)
                 });
-
-            } else {
-                if (this.template) {
-                    this.$element.on({
-                        focus: $.proxy(this.showWidget, this),
-                        click: $.proxy(this.showWidget, this),
-                        blur: $.proxy(this.blurElement, this)
-                    });
-                } else {
-                    this.$element.on({
-                        focus: $.proxy(this.highlightUnit, this),
-                        click: $.proxy(this.highlightUnit, this),
-                        keypress: $.proxy(this.elementKeypress, this),
-                        blur: $.proxy(this.blurElement, this)
-                    });
-                }
             }
 
 
